@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<f:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:f="library://ns.feathersui.com/mxml"
+               theme="feathers.themes.MetalWorksMobileTheme">
+
+    <fx:Script>
+        <![CDATA[
+        [Embed(source="barcode.png")]
+        private static const Barcode: Class;
+
+        import com.github.airext.ZBar;
+
+        private function testIsSupported(): void {
+            trace(com.github.airext.ZBar.isSupported());
+        }
+
+        private function scanEmbeddedBarcode(): void {
+            var bitmap: * = new Barcode();
+            com.github.airext.ZBar.sharedInstance().scan(bitmap.bitmapData, function (error: Error, result: Object) {
+                trace("error:", error);
+                trace("result:", result);
+            })
+        }
+        ]]>
+    </fx:Script>
+
+    <f:layout>
+        <f:VerticalLayout horizontalAlign="center" verticalAlign="middle" gap="20" />
+    </f:layout>
+
+    <f:Button label="Is Supportred" triggered="testIsSupported()" />
+    <f:Button label="Scan Embedded Barcode" triggered="scanEmbeddedBarcode()" />
+
+</f:Application>
