@@ -80,16 +80,10 @@
             trace("FRAME:", Starling.current.frameID);
             if (_camera) {
                 var t: Number = getTimer();
-//                _bmd = new BitmapData(_camera.width, _camera.height, false, 0xFF0000);
-                trace("Ctor took:", (getTimer() - t));
-//                _bmd.clone();
-//                trace("Clone took:", (getTimer() - t));
                 _camera.drawToBitmapData(_bmd);
-                var returnValue:Object = com.github.airext.ZBar.sharedInstance().testScan(_bmd);
-                if (cameraDisplay.backgroundSkin is Image) {
-//                    Image(cameraDisplay.backgroundSkin).texture.dispose();
-                    Image(cameraDisplay.backgroundSkin).texture = Texture.fromBitmapData(_bmd);
-                }
+                com.github.airext.ZBar.sharedInstance().scan(_bmd, function (error, result) {
+
+                });
                 trace("Elapsed time:", (getTimer() - t));
             }
             trace("=============================================================");

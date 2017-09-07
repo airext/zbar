@@ -40,28 +40,29 @@ FREObject ANXZBarScan(FREContext context, void* functionData, uint32_t argc, FRE
 }
 
 FREObject ANXZBarScanSync(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-    
-    NSLog(@"ANXZBarScanSync");
-    
-    return [[ANXZBar sharedInstance] scanBitmapData:argv[0]];
+    return NULL;
+//    NSLog(@"ANXZBarScanSync");
+//    
+//    return [[ANXZBar sharedInstance] scanBitmapData:argv[0]];
 }
 
 FREObject ANXZBarTestScan(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
-    ANXBridgeCall* call = [ANXBridge call:context];
-
-    [[ANXZBar sharedInstance] testScanBitmapData:argv[0] withCompletion:^(NSError *error, NSArray<__kindof NSString *> *result) {
-        NSLog(@"ANXBar complete");
-        [call result:result];
-    }];
-    
-    return [call toFREObject];
+    return NULL;
+//    ANXBridgeCall* call = [ANXBridge call:context];
+//
+//    [[ANXZBar sharedInstance] testScanBitmapData:argv[0] withCompletion:^(NSError *error, NSArray<__kindof NSString *> *result) {
+//        NSLog(@"ANXBar complete");
+//        [call result:result];
+//    }];
+//    
+//    return [call toFREObject];
 }
 
 
 #pragma mark ContextInitialize/ContextFinalizer
 
-void ANXZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet)
-{
+void ANXZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
+    
     *numFunctionsToSet = 4;
     
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToSet));
@@ -87,15 +88,13 @@ void ANXZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext
     *functionsToSet = func;
 }
 
-void ANXZBarContextFinalizer(FREContext ctx)
-{
+void ANXZBarContextFinalizer(FREContext ctx){
     NSLog(@"ANXZBarContextFinalizer");
 }
 
 #pragma mark Initializer/Finalizer
 
-void ANXZBarInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet)
-{
+void ANXZBarInitializer(void** extDataToSet, FREContextInitializer* ctxInitializerToSet, FREContextFinalizer* ctxFinalizerToSet) {
     NSLog(@"ANXZBarInitializer");
     
     *extDataToSet = NULL;
@@ -104,7 +103,6 @@ void ANXZBarInitializer(void** extDataToSet, FREContextInitializer* ctxInitializ
     *ctxFinalizerToSet = &ANXZBarContextFinalizer;
 }
 
-void ANXZBarFinalizer(void* extData)
-{
+void ANXZBarFinalizer(void* extData) {
     NSLog(@"ANXZBarFinalizer");
 }
