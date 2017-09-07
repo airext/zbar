@@ -123,16 +123,5 @@ public class ZBar {
     public function scan(bitmapData: BitmapData, completion: Function): void {
         bridge(context).call("scan", bitmapData).callback(completion);
     }
-
-    public function scanSync(bitmapData: BitmapData): Object {
-        return context.call("scanSync", bitmapData);
-    }
-
-    public function testScan(bitmapData: BitmapData): Object {
-        var callback: Function = function (error, result) {
-
-        };
-        return bridge(context).call("testScan", bitmapData).callback(callback).returnValue;
-    }
 }
 }
