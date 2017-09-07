@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <f:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
-               xmlns:f="library://ns.feathersui.com/mxml"
+               xmlns:f="library://ns.feathersui.com/mxml" skipUnchangedFrames="false"
                theme="feathers.themes.MetalWorksMobileTheme">
 
     <fx:Script>
         <![CDATA[
+        import flash.permissions.PermissionStatus;
+        import flash.events.TimerEvent;
+        import flash.events.PermissionEvent;
+        import flash.display.BitmapData;
+
+        import starling.core.Starling;
+
+        import starling.display.Image;
+        import starling.textures.Texture;
+        import starling.textures.Texture;
+
         [Embed(source="barcode.png")]
         private static const Barcode: Class;
 
@@ -17,19 +28,96 @@
 
         private function scanEmbeddedBarcode(): void {
             var bitmap: * = new Barcode();
-            com.github.airext.ZBar.sharedInstance().scan(bitmap.bitmapData, function (error: Error, result: Object) {
-                trace("error:", error);
-                trace("result:", result);
-            })
+            com.github.airext.ZBar.sharedInstance().testScan(bitmap.bitmapData);
+//            com.github.airext.ZBar.sharedInstance().scan(bitmap.bitmapData, function (error: Error, result: Object) {
+//                trace("error:", error);
+//                trace("result:", result);
+//            })
         }
+
+        private var _camera: Camera;
+
+        private function scanFromCamera(): void {
+            if (!Camera.isSupported) {
+                trace("Camera is not supported");
+                return;
+            }
+            _camera = Camera.getCamera(CameraPosition.BACK) || Camera.getCamera();
+            if (Camera.permissionStatus == PermissionStatus.GRANTED) {
+                startCameraCapture(_camera);
+            } else {
+                _camera.addEventListener(PermissionEvent.PERMISSION_STATUS, function (event: PermissionEvent) {
+                    _camera.removeEventListener(PermissionEvent.PERMISSION_STATUS, arguments.callee);
+                    if (event.status == PermissionStatus.GRANTED) {
+                        startCameraCapture(_camera);
+                    }
+                });
+                _camera.requestPermission();
+            }
+        }
+
+        private var _timer: Timer;
+
+        private function startCameraCapture(camera: Camera): void {
+
+            camera.setMode(1280, 720, 16);
+            var texture: Texture = Texture.fromCamera(camera, 1, function (): void {
+                if (cameraDisplay.backgroundSkin is Image) {
+                    Image(cameraDisplay.backgroundSkin).texture.dispose();
+                }
+                cameraDisplay.backgroundSkin = new Image(texture);
+            });
+
+            if (_timer == null) {
+                _timer = new Timer(1000);
+                _timer.addEventListener(TimerEvent.TIMER, timerHandler);
+                _timer.start();
+            }
+        }
+
+        private var _bmd: BitmapData = new BitmapData(1280, 720, false, 0xFF0023);
+        private function timerHandler(event: TimerEvent): void {
+            trace("FRAME:", Starling.current.frameID);
+            if (_camera) {
+                var t: Number = getTimer();
+//                _bmd = new BitmapData(_camera.width, _camera.height, false, 0xFF0000);
+                trace("Ctor took:", (getTimer() - t));
+//                _bmd.clone();
+//                trace("Clone took:", (getTimer() - t));
+                _camera.drawToBitmapData(_bmd);
+                var returnValue:Object = com.github.airext.ZBar.sharedInstance().testScan(_bmd);
+                if (cameraDisplay.backgroundSkin is Image) {
+//                    Image(cameraDisplay.backgroundSkin).texture.dispose();
+                    Image(cameraDisplay.backgroundSkin).texture = Texture.fromBitmapData(_bmd);
+                }
+                trace("Elapsed time:", (getTimer() - t));
+            }
+            trace("=============================================================");
+        }
+
         ]]>
     </fx:Script>
 
     <f:layout>
-        <f:VerticalLayout horizontalAlign="center" verticalAlign="middle" gap="20" />
+        <f:AnchorLayout />
     </f:layout>
 
-    <f:Button label="Is Supportred" triggered="testIsSupported()" />
-    <f:Button label="Scan Embedded Barcode" triggered="scanEmbeddedBarcode()" />
+    <f:LayoutGroup id="cameraDisplay">
+        <f:layoutData>
+            <f:AnchorLayoutData percentWidth="100" percentHeight="100" />
+        </f:layoutData>
+    </f:LayoutGroup>
+
+    <f:LayoutGroup>
+        <f:layoutData>
+            <f:AnchorLayoutData horizontalCenter="0" verticalCenter="0" />
+        </f:layoutData>
+        <f:layout>
+            <f:VerticalLayout horizontalAlign="center" verticalAlign="middle" gap="20" />
+        </f:layout>
+        <f:Button label="Is Supportred" triggered="testIsSupported()" />
+        <f:Button label="Scan Embedded Barcode" triggered="scanEmbeddedBarcode()" />
+        <f:Button label="Scan from Camera" triggered="scanFromCamera()" />
+    </f:LayoutGroup>
 
 </f:Application>

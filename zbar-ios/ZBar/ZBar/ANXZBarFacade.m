@@ -39,12 +39,30 @@ FREObject ANXZBarScan(FREContext context, void* functionData, uint32_t argc, FRE
     return [call toFREObject];
 }
 
+FREObject ANXZBarScanSync(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    
+    NSLog(@"ANXZBarScanSync");
+    
+    return [[ANXZBar sharedInstance] scanBitmapData:argv[0]];
+}
+
+FREObject ANXZBarTestScan(FREContext context, void* functionData, uint32_t argc, FREObject argv[]) {
+    ANXBridgeCall* call = [ANXBridge call:context];
+
+    [[ANXZBar sharedInstance] testScanBitmapData:argv[0] withCompletion:^(NSError *error, NSArray<__kindof NSString *> *result) {
+        NSLog(@"ANXBar complete");
+        [call result:result];
+    }];
+    
+    return [call toFREObject];
+}
+
 
 #pragma mark ContextInitialize/ContextFinalizer
 
 void ANXZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet)
 {
-    *numFunctionsToSet = 2;
+    *numFunctionsToSet = 4;
     
     FRENamedFunction* func = (FRENamedFunction*) malloc(sizeof(FRENamedFunction) * (*numFunctionsToSet));
     
@@ -55,6 +73,14 @@ void ANXZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext
     func[1].name = (const uint8_t*) "scan";
     func[1].functionData = NULL;
     func[1].function = &ANXZBarScan;
+    
+    func[2].name = (const uint8_t*) "scanSync";
+    func[2].functionData = NULL;
+    func[2].function = &ANXZBarScanSync;
+    
+    func[3].name = (const uint8_t*) "testScan";
+    func[3].functionData = NULL;
+    func[3].function = &ANXZBarTestScan;
     
     [ANXBridge setup:numFunctionsToSet functions:&func];
     

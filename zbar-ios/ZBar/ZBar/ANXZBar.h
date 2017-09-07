@@ -24,6 +24,10 @@ typedef void (^ANXZBarScanCompletion)(NSError* error, NSArray<__kindof NSString*
 
 #pragma mark Scan
 
+- (void)setDisabledCopyingBitmapData:(BOOL)disableCopyingBitmapData;
+
 - (void)scanBitmapData:(FREObject)bmd withCompletion:(ANXZBarScanCompletion)completion;
+- (void)testScanBitmapData:(FREObject)bmd withCompletion:(ANXZBarScanCompletion)completion;
+- (FREObject)scanBitmapData:(FREObject)bmd;
 
 @end

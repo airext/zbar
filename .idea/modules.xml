@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../anx-bridge/anx-bridge-air/anx-bridge/anx-bridge.iml" filepath="$PROJECT_DIR$/../anx-bridge/anx-bridge-air/anx-bridge/anx-bridge.iml" />
       <module fileurl="file://$PROJECT_DIR$/zbar-air/zbar/zbar.iml" filepath="$PROJECT_DIR$/zbar-air/zbar/zbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/zbar-air/zbar-debug/zbar-debug.iml" filepath="$PROJECT_DIR$/zbar-air/zbar-debug/zbar-debug.iml" />
     </modules>

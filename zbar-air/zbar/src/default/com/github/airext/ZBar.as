@@ -86,5 +86,13 @@ public class ZBar {
 
     public function scan(bitmapData: BitmapData, completion: Function): void {
     }
+
+    public function scanSync(bitmapData: BitmapData): Object {
+        return null;
+    }
+
+    public function testScan(bitmapData: BitmapData): Object {
+        return null;
+    }
 }
 }
