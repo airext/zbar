@@ -47,7 +47,7 @@ Set iOS minimum version to 8.0 in iPhone InfoAdditions:
 ```
 it seems to be final step, but before to use it you check if ZBar extension is available on the current platform:
 ```as3
-if (ZBar.isSupported() {
+if (ZBar.isSupported()) {
   // we're set
 }
 ```
