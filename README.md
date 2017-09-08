@@ -1,7 +1,7 @@
 # zbar
 AIR Native Extension for ZBar Bar Code Reader library
 
-This ANE allows to **asynchronously** scan `BitmapData` for barcodes, under hood it uses [ZBar](https://github.com/ZBar/ZBar) a well known Bar Code reader.
+This ANE allows to **asynchronously** scan `BitmapData` for barcodes, under the hood it uses [ZBar](https://github.com/ZBar/ZBar) a well known Bar Code reader.
 
 ## Dependencies
 
