@@ -19,17 +19,29 @@ It uses `ANXBridge` extension for asynchronous calls.
     <extensionID>com.github.airext.Bridge</extensionID>
 </extensions>
 ```
+Set iOS minimum version to 8.0 in iPhone InfoAdditions:
+```xml
+<iPhone>
+    <!-- A list of plist key/value pairs to be added to the application Info.plist -->
+    <InfoAdditions>
+        <![CDATA[
+        <key>MinimumOSVersion</key>
+        <string>8.0</string>
+        ]]>
+    </InfoAdditions>
+</iPhone>
+```
 3. You probably want to use it to scan barcodes using Camera, if so let Android to understand that by registering Camera permission in Android Manifest additoins, like this:
 ```xml
 <android>
-  <manifestAdditions>
-    <![CDATA[
-    <manifest android:installLocation="auto">
-      <uses-permission android:name="android.permission.INTERNET"/>
-      <uses-permission android:name="android.permission.CAMERA"/>
-    </manifest>
-    ]]>
-  </manifestAdditions>
+    <manifestAdditions>
+        <![CDATA[
+        <manifest android:installLocation="auto">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.CAMERA"/>
+        </manifest>
+        ]]>
+    </manifestAdditions>
 </android>
 ```
 it seems to be final step, but before to use it you check if ZBar extension is available on the current platform:
