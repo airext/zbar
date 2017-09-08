@@ -28,11 +28,10 @@
 
         private function scanEmbeddedBarcode(): void {
             var bitmap: * = new Barcode();
-            com.github.airext.ZBar.sharedInstance().testScan(bitmap.bitmapData);
-//            com.github.airext.ZBar.sharedInstance().scan(bitmap.bitmapData, function (error: Error, result: Object) {
-//                trace("error:", error);
-//                trace("result:", result);
-//            })
+            com.github.airext.ZBar.sharedInstance().scan(bitmap.bitmapData, function (error: Error, result: Object) {
+                trace("error:", error);
+                trace("result:", result);
+            })
         }
 
         private var _camera: Camera;

@@ -44,6 +44,7 @@ public class ZBar {
     //-------------------------------------
 
     public static function isSupported():Boolean {
+        trace("[airext] zbar extension is not supported on this platform.");
         return false;
     }
 
@@ -85,6 +86,7 @@ public class ZBar {
     //--------------------------------------------------------------------------
 
     public function scan(bitmapData: BitmapData, completion: Function): void {
+        trace("[airext] zbar extension is not supported on this platform.");
     }
 }
 }
