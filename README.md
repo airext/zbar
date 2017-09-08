@@ -1,7 +1,7 @@
 # zbar
 AIR Native Extension for ZBar Bar Code Reader library
 
-This ANE allows to *asynchronously* scan `BitmapData` for barcodes, under hood it uses [ZBar](https://github.com/ZBar/ZBar) a well known Bar Code reader.
+This ANE allows to **asynchronously** scan `BitmapData` for barcodes, under hood it uses [ZBar](https://github.com/ZBar/ZBar) a well known Bar Code reader.
 
 ## Dependencies
 
@@ -31,6 +31,7 @@ Set iOS minimum version to 8.0 in iPhone InfoAdditions:
     </InfoAdditions>
 </iPhone>
 ```
+**Note:** In fact iOS 8.0 is not required, but Objective-C files are compiled targeting it, if you really need to support lower versions of iOS you could recompile and repackage this ANE and it will work.
 3. You probably want to use it to scan barcodes using Camera, if so let Android to understand that by registering Camera permission in Android Manifest additoins, like this:
 ```xml
 <android>
