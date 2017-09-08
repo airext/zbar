@@ -11,7 +11,7 @@ It uses `ANXBridge` extension for asynchronous calls.
 
 ## Installation 
 
-1. Download [zbar.ane]() and [anx-bridge.ane](https://github.com/airext/anx-bridge/blob/master/bin/anx-bridge.ane) ANEs and [add them as dependencies](http://bit.ly/2xTSJry) to your project. 
+1. Download [zbar.ane](https://github.com/airext/zbar/releases) and [anx-bridge.ane](https://github.com/airext/anx-bridge/blob/master/bin/anx-bridge.ane) ANEs and [add them as dependencies](http://bit.ly/2xTSJry) to your project. 
 
 2. Edit your [Application Descriptor](http://help.adobe.com/en_US/air/build/WS5b3ccc516d4fbf351e63e3d118666ade46-7ff1.html) file with registering two native extensions like this:
 ```xml
