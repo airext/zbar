@@ -1,0 +1,37 @@
+<extension xmlns="http://ns.adobe.com/air/extension/24.0">
+  <id>com.github.airext.ZBar</id>
+  <versionNumber>1.0.0</versionNumber>
+  <platforms>
+    <platform name="iPhone-ARM">
+      <applicationDeployment>
+        <nativeLibrary>libANXZBar.a</nativeLibrary>
+        <initializer>ANXZBarInitializer</initializer>
+        <finalizer>ANXZBarFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="iPhone-x86">
+      <applicationDeployment>
+        <nativeLibrary>libANXZBarSimulator.a</nativeLibrary>
+        <initializer>ANXZBarInitializer</initializer>
+        <finalizer>ANXZBarFinalizer</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="Android-ARM">
+      <applicationDeployment>
+        <nativeLibrary>libANXZBar.jar</nativeLibrary>
+        <initializer>com.github.airext.ZBar</initializer>
+        <finalizer>com.github.airext.ZBar</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="Android-x86">
+      <applicationDeployment>
+        <nativeLibrary>libANXZBar.jar</nativeLibrary>
+        <initializer>com.github.airext.ZBar</initializer>
+        <finalizer>com.github.airext.ZBar</finalizer>
+      </applicationDeployment>
+    </platform>
+    <platform name="default">
+      <applicationDeployment/>
+    </platform>
+  </platforms>
+</extension>

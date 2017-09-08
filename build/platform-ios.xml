@@ -1,0 +1,18 @@
+<platform xmlns="http://ns.adobe.com/air/extension/24.0">
+    <description></description> 
+    <sdkVersion>8.0</sdkVersion>
+
+    <linkerOptions>
+        <option>-ios_version_min 8.0</option>
+        <option>-framework AVFoundation</option>
+        <option>-framework CoreMedia</option>
+        <option>-framework CoreVideo</option>
+        <option>-framework CoreVideo</option>
+        <option>-framework QuartzCore</option>
+        <option>-liconv</option>
+    </linkerOptions>
+
+    <packagedDependencies>
+        <packagedDependency>libzbar.a</packagedDependency>
+    </packagedDependencies>
+</platform>

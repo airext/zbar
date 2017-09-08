@@ -75,6 +75,7 @@
         }
 
         private var _bmd: BitmapData = new BitmapData(1280, 720, false, 0xFF0023);
+
         private function timerHandler(event: TimerEvent): void {
             trace("FRAME:", Starling.current.frameID);
             if (_camera) {
@@ -88,6 +89,9 @@
             trace("=============================================================");
         }
 
+        private function testVersion(): void {
+            trace(com.github.airext.ZBar.extensionVersion());
+        }
         ]]>
     </fx:Script>
 
@@ -109,6 +113,7 @@
             <f:VerticalLayout horizontalAlign="center" verticalAlign="middle" gap="20" />
         </f:layout>
         <f:Button label="Is Supportred" triggered="testIsSupported()" />
+        <f:Button label="Extension Version" triggered="testVersion()" />
         <f:Button label="Scan Embedded Barcode" triggered="scanEmbeddedBarcode()" />
         <f:Button label="Scan from Camera" triggered="scanFromCamera()" />
     </f:LayoutGroup>
