@@ -394,6 +394,7 @@
 				507CD29C1F5E92B4001CD721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

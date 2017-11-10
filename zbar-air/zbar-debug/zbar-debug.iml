@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="zbar-debug">
+    <configurations>
+      <configuration name="zbar-debug" target-platform="Mobile" main-class="ZBar" output-file="ZBar.swf" output-folder="$MODULE_DIR$/../../out/production/zbar-debug">
+        <dependencies target-player="26.0">
+          <entries>
+            <entry library-id="9d4e4730-5abb-4c2e-a287-f8443351490b">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="50dff763-61a3-4300-b2c9-f2d87885c0d5">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-id="336f6cc6-4921-4175-9a05-68822df9956d">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="3.3.0" />
+        </dependencies>
+        <compiler-options>
+          <option name="additionalOptions" value="-preloader= -advanced-telemetry=true" />
+        </compiler-options>
+        <packaging-air-desktop />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/ZBar-app.xml" package-file-name="ZBar" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/ZBar-app.xml" package-file-name="ZBar">
+          <AirSigningOptions keystore-path="$USER_HOME$/cert/rozd/max.rozdobudko.dev.p12" provisioning-profile-path="$USER_HOME$/cert/rozd/whateverdev.mobileprovision" />
+        </packaging-ios>
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="3.3.0" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="9d4e4730-5abb-4c2e-a287-f8443351490b" />
+        <CLASSES>
+          <root url="file://$USER_HOME$/sdks/feathers/3.3.0/frameworks/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/sdks/feathers/3.3.0/frameworks/libs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="50dff763-61a3-4300-b2c9-f2d87885c0d5" />
+        <CLASSES>
+          <root url="jar://$USER_HOME$/sdks/feathers/3.3.0/frameworks/themes/MetalWorksMobileTheme/MetalWorksMobileTheme.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="336f6cc6-4921-4175-9a05-68822df9956d" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/ane" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/ane" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
