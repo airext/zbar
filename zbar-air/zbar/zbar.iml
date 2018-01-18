@@ -9,7 +9,7 @@
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="24.0.0" />
+          <sdk name="27.0.0" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
@@ -25,7 +25,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/default" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="24.0.0" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="27.0.0" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library type="flex">
